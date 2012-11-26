@@ -1,14 +1,22 @@
 -module(erlotp).
 -author('omar@kodi.is').
 
+-type token() :: integer().
+-type secret() :: binary().
+-type interval() :: integer().
+
 -export([get_hotp/2,
 	 get_totp/1]).
+
+-export_type([token/0,
+	      secret/0,
+	      interval/0]).
 
 %% @doc
 %% Get a one time token based on a secret and a 
 %% interval number.
 %% @end
--spec get_hotp(binary(), integer()) -> integer().
+-spec get_hotp(secret(), interval()) -> token().
 get_hotp(Secret, Interval) when is_binary(Secret),
 				is_integer(Interval) ->
     Key = erlotp_base32:decode(Secret),
@@ -20,7 +28,7 @@ get_hotp(Secret, Interval) when is_binary(Secret),
 %% @doc
 %% Get a one time token based on a secret time.
 %% @end
--spec get_totp(binary()) -> integer().
+-spec get_totp(secret()) -> token().
 get_totp(Secret) ->
     Timestamp = timestamp(now()) div 30,
     get_hotp(Secret, Timestamp).
