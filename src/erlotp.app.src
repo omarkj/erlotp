@@ -1,0 +1,12 @@
+%%% -*- mode: erlang -*-
+{application, erlotp,
+ [
+  {description, "One-time password generator"},
+  {vsn, "1.0"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+		  crypto
+                 ]}
+ ]}.
