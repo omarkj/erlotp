@@ -1,6 +1,8 @@
 Erlotp
 ======
 
+[![Build Status](https://secure.travis-ci.org/omarkj/erlotp.png)](https://travis-ci.org/omarkj/erlotp)
+
 Generate one time passwords, [HOTP](http://en.wikipedia.org/wiki/HOTP)s and
 [TOTP](http://en.wikipedia.org/wiki/Time-based_One-time_Password_Algorithm)s for 
 your application. Should work with the Google Authenticator.
