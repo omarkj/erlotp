@@ -21,7 +21,7 @@
 secret(N) when N < 16 ->
     throw({error, unsafe_secret});
 secret(N) ->
-    Key = crypto:rand_bytes(N),
+    Key = crypto:strong_rand_bytes(N),
     Secret = erlotp_base32:encode(Key),
     Secret.
 
