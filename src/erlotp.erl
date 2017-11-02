@@ -43,8 +43,5 @@ get_hotp(Secret, Interval) when is_binary(Secret),
 %% @end
 -spec get_totp(secret()) -> token().
 get_totp(Secret) ->
-    Timestamp = timestamp(now()) div 30,
+    Timestamp = erlang:system_time(second) div 30,
     get_hotp(Secret, Timestamp).
-
-timestamp({Mega, Secs, _}) ->
-    Mega*1000000 + Secs.
